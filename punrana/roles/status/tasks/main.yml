@@ -1,0 +1,4 @@
+---
+- name: check Stauts
+  status:
+    comand: ansible -i hosts all -m command -a "docker ps -a "

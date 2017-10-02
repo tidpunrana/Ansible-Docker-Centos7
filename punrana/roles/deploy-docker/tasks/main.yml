@@ -1,0 +1,55 @@
+---
+- name: Deploy Nginx-Proxy 
+  docker:
+    name: proxy_1
+    image: pisup/punrana-nginx-proxy
+    state: started
+    ports:
+      - "80:80"
+      - "443:443"
+
+- name: Deploy mongodb
+  docker:
+    name: db-mongodb
+    image: tutum/mongodb
+    state: started
+    ports:
+      - "27017:27017"
+
+#- name: Deploy Webserver On Centos-Docker-Container
+#  docker:
+#    name: www.10kthailandchampionship.com
+#    image: pisup/punrana-wordpress
+#    state: started 
+#    ports:
+#       - "8080:80"
+#    volumes:
+#       - "/home/pim.com/www:/var/www/html"
+#    privileged: "true"
+#
+#
+#- name: Deploy mariadb
+#  docker_container:
+#   name: mariadb-pim
+#   image: pisup/punrana-db
+#   volumes:
+#        - "/home/pim/data:/var/lib/mysql"
+#   privileged: "true"
+#
+#   env:
+#      MYSQL_ROOT_PASSWORD: "Mvision@123"
+#      MYSQL_DATABASE: "pim_db"
+#      MYSQL_USER: "admin"
+#      MYSQL_PASSWORD: "Mvision@123"
+#      ports:
+#        - "3306:3306"
+#
+#- name: Deploy phpMyamdin
+#  docker:
+#    name: phpmyadmin_pim
+#    image: pisup/punrana-phpmyadmin
+#    state: started
+#    ports:
+#       - "9996:80"
+#    links:
+#       - "mariadb-pim:db"
